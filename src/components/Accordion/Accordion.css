@@ -1,0 +1,113 @@
+.neu-accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+}
+
+/* ── Item ── */
+.neu-accordion-item {
+  --neu-bg: #e0e5ec;
+  --neu-shadow-light: #ffffff;
+  --neu-shadow-dark: #b8bec7;
+
+  border-radius: 0.875rem;
+  background: var(--neu-bg);
+  box-shadow:
+    6px 6px 14px var(--neu-shadow-dark),
+    -6px -6px 14px var(--neu-shadow-light);
+  transition: box-shadow 0.25s ease;
+}
+
+.neu-accordion-item--open {
+  box-shadow:
+    8px 8px 18px var(--neu-shadow-dark),
+    -8px -8px 18px var(--neu-shadow-light);
+}
+
+.neu-accordion-item--disabled {
+  opacity: 0.45;
+}
+
+/* ── Header ── */
+.neu-accordion-item__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  width: 100%;
+  padding: 1rem 1.25rem;
+  border: none;
+  border-radius: 0.875rem;
+  background: transparent;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: #374151;
+  text-align: left;
+  transition: border-radius 0.25s ease;
+}
+
+.neu-accordion-item--open .neu-accordion-item__header {
+  border-radius: 0.875rem 0.875rem 0 0;
+  color: #3b82f6;
+}
+
+.neu-accordion-item__header:focus-visible {
+  outline: 2px solid #3b82f6;
+  outline-offset: -3px;
+  border-radius: 0.875rem;
+}
+
+.neu-accordion-item--disabled .neu-accordion-item__header {
+  cursor: not-allowed;
+}
+
+/* ── Title ── */
+.neu-accordion-item__title {
+  flex: 1;
+}
+
+/* ── Chevron ── */
+.neu-accordion-item__chevron {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  width: 1.125rem;
+  height: 1.125rem;
+  color: #9ca3af;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), color 0.25s ease;
+}
+
+.neu-accordion-item__chevron svg {
+  width: 100%;
+  height: 100%;
+}
+
+.neu-accordion-item__chevron--open {
+  transform: rotate(180deg);
+  color: #3b82f6;
+}
+
+/* ── Separator between header and body ── */
+.neu-accordion-item--open .neu-accordion-item__header::after {
+  display: none;
+}
+
+/* ── Body (animated via JS) ── */
+.neu-accordion-item__body {
+  transition: height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ── Content ── */
+.neu-accordion-item__content {
+  padding: 0.875rem 1.25rem 1.25rem;
+  font-size: 0.9375rem;
+  color: #6b7280;
+  line-height: 1.7;
+  border-top: 1.5px solid rgba(184, 190, 199, 0.5);
+  box-shadow:
+    inset 2px 2px 6px var(--neu-shadow-dark),
+    inset -2px -2px 6px var(--neu-shadow-light);
+  border-radius: 0 0 0.875rem 0.875rem;
+}

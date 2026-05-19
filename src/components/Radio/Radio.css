@@ -1,0 +1,94 @@
+.neu-radio {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 0.625rem;
+  cursor: pointer;
+  user-select: none;
+}
+
+.neu-radio--disabled { opacity: 0.45; cursor: not-allowed; }
+
+.neu-radio__native {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+
+/* ── Ring ── */
+.neu-radio__ring {
+  --neu-bg: #e0e5ec;
+  --neu-shadow-light: #ffffff;
+  --neu-shadow-dark: #b8bec7;
+
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  background: var(--neu-bg);
+  box-shadow:
+    inset 3px 3px 6px var(--neu-shadow-dark),
+    inset -3px -3px 6px var(--neu-shadow-light);
+  transition: box-shadow 0.2s ease;
+}
+
+.neu-radio__ring--sm { width: 1.125rem; height: 1.125rem; }
+.neu-radio__ring--md { width: 1.375rem; height: 1.375rem; }
+.neu-radio__ring--lg { width: 1.625rem; height: 1.625rem; }
+
+.neu-radio__ring--selected {
+  box-shadow:
+    inset 4px 4px 8px var(--neu-shadow-dark),
+    inset -4px -4px 8px var(--neu-shadow-light);
+}
+
+.neu-radio:not(.neu-radio--disabled):hover .neu-radio__ring:not(.neu-radio__ring--selected) {
+  box-shadow:
+    inset 4px 4px 8px var(--neu-shadow-dark),
+    inset -4px -4px 8px var(--neu-shadow-light);
+}
+
+/* ── Dot ── */
+.neu-radio__dot {
+  border-radius: 9999px;
+  background: #3b82f6;
+  box-shadow: 0 0 6px rgba(59, 130, 246, 0.4);
+  animation: neu-dot-in 0.15s ease;
+}
+
+.neu-radio__ring--sm .neu-radio__dot { width: 0.45rem; height: 0.45rem; }
+.neu-radio__ring--md .neu-radio__dot { width: 0.55rem; height: 0.55rem; }
+.neu-radio__ring--lg .neu-radio__dot { width: 0.65rem; height: 0.65rem; }
+
+.neu-radio__ring--error .neu-radio__dot {
+  background: #ef4444;
+  box-shadow: 0 0 6px rgba(239, 68, 68, 0.4);
+}
+
+@keyframes neu-dot-in {
+  from { transform: scale(0); opacity: 0; }
+  to   { transform: scale(1); opacity: 1; }
+}
+
+/* ── Content ── */
+.neu-radio__content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+  padding-top: 0.1rem;
+}
+
+.neu-radio__label {
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: #374151;
+  line-height: 1.4;
+}
+
+.neu-radio--sm .neu-radio__label { font-size: 0.8125rem; }
+.neu-radio--lg .neu-radio__label { font-size: 1rem; }
+
+.neu-radio__hint        { font-size: 0.8125rem; color: #6b7280; line-height: 1.4; }
+.neu-radio__hint--error { color: #ef4444; }

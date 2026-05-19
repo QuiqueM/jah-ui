@@ -1,0 +1,10 @@
+.neu-avatar-group {
+  display: inline-flex;
+  align-items: center;
+}
+
+.neu-avatar-group__item {
+  border: 2.5px solid #e0e5ec;
+  border-radius: 9999px;
+  position: relative;
+}

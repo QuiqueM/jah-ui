@@ -1,0 +1,118 @@
+.neu-btn {
+  --neu-bg: #e0e5ec;
+  --neu-shadow-light: #ffffff;
+  --neu-shadow-dark: #b8bec7;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  letter-spacing: 0.025em;
+  border: none;
+  background: var(--neu-bg);
+  cursor: pointer;
+  transition: box-shadow 0.2s ease, color 0.2s ease;
+  box-shadow:
+    6px 6px 12px var(--neu-shadow-dark),
+    -6px -6px 12px var(--neu-shadow-light);
+}
+
+.neu-btn:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
+
+.neu-btn:hover:not(:disabled) {
+  box-shadow:
+    9px 9px 18px var(--neu-shadow-dark),
+    -9px -9px 18px var(--neu-shadow-light);
+}
+
+.neu-btn:active:not(:disabled) {
+  box-shadow:
+    inset 4px 4px 8px var(--neu-shadow-dark),
+    inset -4px -4px 8px var(--neu-shadow-light);
+}
+
+.neu-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* ── Variants ── */
+.neu-btn--primary   { color: #3b82f6; }
+.neu-btn--secondary { color: #6b7280; }
+.neu-btn--danger    { color: #ef4444; }
+
+.neu-btn--ghost {
+  box-shadow: none;
+  color: #6b7280;
+}
+
+.neu-btn--ghost:hover:not(:disabled) {
+  box-shadow:
+    4px 4px 8px var(--neu-shadow-dark),
+    -4px -4px 8px var(--neu-shadow-light);
+}
+
+.neu-btn--ghost:active:not(:disabled) {
+  box-shadow:
+    inset 3px 3px 6px var(--neu-shadow-dark),
+    inset -3px -3px 6px var(--neu-shadow-light);
+}
+
+/* ── Sizes ── */
+.neu-btn--sm { height: 2rem;    padding: 0 0.75rem;  font-size: 0.8125rem; }
+.neu-btn--md { height: 2.75rem; padding: 0 1.25rem;  font-size: 0.9375rem; }
+.neu-btn--lg { height: 3.25rem; padding: 0 1.75rem;  font-size: 1rem; }
+
+/* ── Rounded ── */
+.neu-btn--rounded-none { border-radius: 0; }
+.neu-btn--rounded-sm   { border-radius: 0.25rem; }
+.neu-btn--rounded-md   { border-radius: 0.5rem; }
+.neu-btn--rounded-lg   { border-radius: 0.75rem; }
+.neu-btn--rounded-xl   { border-radius: 1.25rem; }
+.neu-btn--rounded-full { border-radius: 9999px; }
+
+/* ── Loading ── */
+.neu-btn--loading {
+  cursor: wait;
+  position: relative;
+}
+
+.neu-btn__content {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+}
+
+.neu-btn__icon {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  width: 1em;
+  height: 1em;
+}
+
+.neu-btn__label--hidden {
+  visibility: hidden;
+}
+
+.neu-spinner {
+  position: absolute;
+  width: 1.1em;
+  height: 1.1em;
+  stroke-dasharray: 40;
+  stroke-dashoffset: 40;
+  animation: neu-spin 0.9s linear infinite, neu-dash 1.4s ease-in-out infinite;
+}
+
+@keyframes neu-spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes neu-dash {
+  0%   { stroke-dashoffset: 56; }
+  50%  { stroke-dashoffset: 14; }
+  100% { stroke-dashoffset: 56; }
+}

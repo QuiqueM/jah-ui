@@ -1,0 +1,111 @@
+.neu-pagination {
+  --neu-bg: #e0e5ec;
+  --neu-shadow-light: #ffffff;
+  --neu-shadow-dark: #b8bec7;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  flex-wrap: wrap;
+}
+
+/* ── Sizes ── */
+.neu-pagination--sm { gap: 0.25rem; }
+.neu-pagination--lg { gap: 0.5rem; }
+
+/* ── Button base ── */
+.neu-pagination__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  background: var(--neu-bg);
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: 500;
+  color: #6b7280;
+  box-shadow:
+    4px 4px 9px var(--neu-shadow-dark),
+    -4px -4px 9px var(--neu-shadow-light);
+  transition: box-shadow 0.15s ease, color 0.15s ease;
+  line-height: 1;
+}
+
+.neu-pagination__btn:focus-visible {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+.neu-pagination__btn:hover:not(:disabled):not(.neu-pagination__btn--active) {
+  box-shadow:
+    6px 6px 12px var(--neu-shadow-dark),
+    -6px -6px 12px var(--neu-shadow-light);
+  color: #374151;
+}
+
+.neu-pagination__btn:active:not(:disabled):not(.neu-pagination__btn--active) {
+  box-shadow:
+    inset 3px 3px 7px var(--neu-shadow-dark),
+    inset -3px -3px 7px var(--neu-shadow-light);
+}
+
+/* ── Sizes ── */
+.neu-pagination--sm .neu-pagination__btn {
+  width: 1.875rem;
+  height: 1.875rem;
+  font-size: 0.8125rem;
+}
+
+.neu-pagination--md .neu-pagination__btn {
+  width: 2.375rem;
+  height: 2.375rem;
+  font-size: 0.9375rem;
+}
+
+.neu-pagination--lg .neu-pagination__btn {
+  width: 2.875rem;
+  height: 2.875rem;
+  font-size: 1rem;
+}
+
+.neu-pagination--sm .neu-pagination__btn svg { width: 0.875rem; height: 0.875rem; }
+.neu-pagination--md .neu-pagination__btn svg { width: 1rem;     height: 1rem; }
+.neu-pagination--lg .neu-pagination__btn svg { width: 1.125rem; height: 1.125rem; }
+
+/* ── Rounded ── */
+.neu-pagination__btn--rounded-none { border-radius: 0; }
+.neu-pagination__btn--rounded-sm   { border-radius: 0.25rem; }
+.neu-pagination__btn--rounded-md   { border-radius: 0.5rem; }
+.neu-pagination__btn--rounded-lg   { border-radius: 0.75rem; }
+.neu-pagination__btn--rounded-full { border-radius: 9999px; }
+
+/* ── Active (current page) ── */
+.neu-pagination__btn--active {
+  color: #3b82f6;
+  font-weight: 700;
+  cursor: default;
+  box-shadow:
+    inset 3px 3px 7px var(--neu-shadow-dark),
+    inset -3px -3px 7px var(--neu-shadow-light);
+}
+
+/* ── Disabled ── */
+.neu-pagination__btn--disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+/* ── Ellipsis ── */
+.neu-pagination__ellipsis {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #9ca3af;
+  font-weight: 500;
+  user-select: none;
+}
+
+.neu-pagination--sm .neu-pagination__ellipsis { width: 1.875rem; font-size: 0.8125rem; }
+.neu-pagination--md .neu-pagination__ellipsis { width: 2.375rem; font-size: 0.9375rem; }
+.neu-pagination--lg .neu-pagination__ellipsis { width: 2.875rem; font-size: 1rem; }

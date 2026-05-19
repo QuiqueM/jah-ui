@@ -1,0 +1,268 @@
+/* ── Neumorphic variables ── */
+.neu-upload {
+  --neu-bg:           #e0e5ec;
+  --neu-shadow-light: #ffffff;
+  --neu-shadow-dark:  #b8bec7;
+  --upload-color:     #3b82f6;
+  --upload-error:     #ef4444;
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  font-family: inherit;
+}
+
+/* ════════════════════════════════════════
+   HIDDEN INPUT
+════════════════════════════════════════ */
+.neu-upload__input {
+  display: none;
+}
+
+/* ════════════════════════════════════════
+   DROP ZONE
+════════════════════════════════════════ */
+.neu-upload__zone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  min-height: 9rem;
+  padding: 2rem 1.5rem;
+  border: none;
+  border-radius: 1rem;
+  background: var(--neu-bg);
+  cursor: pointer;
+  transition:
+    box-shadow 0.25s ease,
+    background 0.25s ease;
+
+  /* Inset (recessed) look for the drop area */
+  box-shadow:
+    inset 4px 4px 10px var(--neu-shadow-dark),
+    inset -4px -4px 10px var(--neu-shadow-light);
+}
+
+.neu-upload__zone:focus-visible {
+  outline: 2px solid var(--upload-color);
+  outline-offset: 3px;
+}
+
+/* Dragging state: blue tint + deeper inset */
+.neu-upload__zone--dragging {
+  background: #dde5f5;
+  box-shadow:
+    inset 6px 6px 14px #b0bed8,
+    inset -6px -6px 14px #eaf0ff;
+}
+
+/* Error state */
+.neu-upload__zone--error {
+  box-shadow:
+    inset 4px 4px 10px #dab8b8,
+    inset -4px -4px 10px #fff0f0;
+}
+
+/* When files are present: compact the zone a bit */
+.neu-upload__zone--has-files {
+  min-height: 6rem;
+  padding: 1.25rem 1.5rem;
+}
+
+/* Disabled */
+.neu-upload--disabled .neu-upload__zone {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+/* ════════════════════════════════════════
+   ZONE ICON
+════════════════════════════════════════ */
+.neu-upload__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 50%;
+  background: var(--neu-bg);
+  color: #9ca3af;
+  box-shadow:
+    4px 4px 9px var(--neu-shadow-dark),
+    -4px -4px 9px var(--neu-shadow-light);
+  transition: color 0.25s ease, box-shadow 0.25s ease;
+  flex-shrink: 0;
+}
+
+.neu-upload__icon svg {
+  width: 1.375rem;
+  height: 1.375rem;
+}
+
+.neu-upload__icon--dragging {
+  color: var(--upload-color);
+  box-shadow:
+    2px 2px 6px var(--neu-shadow-dark),
+    -2px -2px 6px var(--neu-shadow-light);
+}
+
+/* ════════════════════════════════════════
+   ZONE TEXT
+════════════════════════════════════════ */
+.neu-upload__label {
+  margin: 0;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: #6b7280;
+  text-align: center;
+  pointer-events: none;
+  transition: color 0.25s ease;
+}
+
+.neu-upload__zone--dragging .neu-upload__label {
+  color: var(--upload-color);
+}
+
+.neu-upload__hint {
+  margin: 0;
+  font-size: 0.8125rem;
+  color: #9ca3af;
+  text-align: center;
+  pointer-events: none;
+}
+
+/* ════════════════════════════════════════
+   ZONE-LEVEL ERROR MESSAGE
+════════════════════════════════════════ */
+.neu-upload__error-msg {
+  font-size: 0.8125rem;
+  color: var(--upload-error);
+  padding-left: 0.25rem;
+}
+
+/* ════════════════════════════════════════
+   FILE LIST
+════════════════════════════════════════ */
+.neu-upload__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.neu-upload__file {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.625rem 0.875rem;
+  border-radius: 0.75rem;
+  background: var(--neu-bg);
+  box-shadow:
+    4px 4px 9px var(--neu-shadow-dark),
+    -4px -4px 9px var(--neu-shadow-light);
+  transition: box-shadow 0.2s ease;
+}
+
+.neu-upload__file--error {
+  background: #fef2f2;
+  box-shadow:
+    4px 4px 9px #e8b8b8,
+    -4px -4px 9px #fff8f8;
+}
+
+/* ── File type icon ── */
+.neu-upload__file-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 0.5rem;
+  background: var(--neu-bg);
+  color: #6b7280;
+  flex-shrink: 0;
+  box-shadow:
+    2px 2px 5px var(--neu-shadow-dark),
+    -2px -2px 5px var(--neu-shadow-light);
+}
+
+.neu-upload__file--error .neu-upload__file-icon {
+  background: #fef2f2;
+  color: var(--upload-error);
+  box-shadow:
+    2px 2px 5px #e8b8b8,
+    -2px -2px 5px #fff8f8;
+}
+
+.neu-upload__file-icon svg {
+  width: 1rem;
+  height: 1rem;
+}
+
+/* ── File info ── */
+.neu-upload__file-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.neu-upload__file-name {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #374151;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.neu-upload__file-meta {
+  font-size: 0.75rem;
+  color: #9ca3af;
+}
+
+.neu-upload__file-error {
+  color: var(--upload-error);
+}
+
+/* ── Remove button ── */
+.neu-upload__file-remove {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  border: none;
+  border-radius: 50%;
+  background: var(--neu-bg);
+  color: #9ca3af;
+  cursor: pointer;
+  flex-shrink: 0;
+  box-shadow:
+    3px 3px 6px var(--neu-shadow-dark),
+    -3px -3px 6px var(--neu-shadow-light);
+  transition: color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.neu-upload__file-remove:hover {
+  color: var(--upload-error);
+  box-shadow:
+    1px 1px 3px var(--neu-shadow-dark),
+    -1px -1px 3px var(--neu-shadow-light);
+}
+
+.neu-upload__file-remove:active {
+  box-shadow:
+    inset 2px 2px 4px var(--neu-shadow-dark),
+    inset -2px -2px 4px var(--neu-shadow-light);
+}
+
+.neu-upload__file-remove svg {
+  width: 0.875rem;
+  height: 0.875rem;
+}

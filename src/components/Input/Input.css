@@ -1,0 +1,124 @@
+.neu-input-root {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+
+.neu-input__label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #4b5563;
+  padding-left: 0.25rem;
+}
+
+/* ── Wrapper ── */
+.neu-input__wrapper {
+  --neu-bg: #e0e5ec;
+  --neu-shadow-light: #ffffff;
+  --neu-shadow-dark: #b8bec7;
+
+  display: flex;
+  align-items: center;
+  background: var(--neu-bg);
+  box-shadow:
+    inset 4px 4px 8px var(--neu-shadow-dark),
+    inset -4px -4px 8px var(--neu-shadow-light);
+  transition: box-shadow 0.2s ease;
+}
+
+.neu-input__wrapper--focused {
+  box-shadow:
+    inset 5px 5px 10px var(--neu-shadow-dark),
+    inset -5px -5px 10px var(--neu-shadow-light);
+}
+
+.neu-input__wrapper--error {
+  box-shadow:
+    inset 4px 4px 8px #f0b8b8,
+    inset -4px -4px 8px #ffffff;
+}
+
+.neu-input__wrapper--disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* ── Sizes ── */
+.neu-input__wrapper--sm { height: 2rem;    padding: 0 0.625rem; gap: 0.375rem; font-size: 0.8125rem; }
+.neu-input__wrapper--md { height: 2.75rem; padding: 0 0.875rem; gap: 0.5rem;   font-size: 0.9375rem; }
+.neu-input__wrapper--lg { height: 3.25rem; padding: 0 1rem;     gap: 0.625rem; font-size: 1rem; }
+
+/* ── Rounded ── */
+.neu-input__wrapper--rounded-none { border-radius: 0; }
+.neu-input__wrapper--rounded-sm   { border-radius: 0.25rem; }
+.neu-input__wrapper--rounded-md   { border-radius: 0.5rem; }
+.neu-input__wrapper--rounded-lg   { border-radius: 0.75rem; }
+.neu-input__wrapper--rounded-xl   { border-radius: 1.25rem; }
+.neu-input__wrapper--rounded-full { border-radius: 9999px; }
+
+/* ── Field ── */
+.neu-input__field {
+  flex: 1;
+  min-width: 0;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: inherit;
+  color: #374151;
+  font-family: inherit;
+}
+
+.neu-input__field::placeholder { color: #9ca3af; }
+.neu-input__field:disabled     { cursor: not-allowed; }
+
+/* ── Icons ── */
+.neu-input__icon {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  color: #9ca3af;
+  width: 1.1em;
+  height: 1.1em;
+}
+
+/* ── Affix ── */
+.neu-input__affix {
+  flex-shrink: 0;
+  color: #6b7280;
+  font-weight: 500;
+  user-select: none;
+}
+
+.neu-input__affix--prefix { padding-right: 0.125rem; }
+.neu-input__affix--suffix { padding-left: 0.125rem; }
+
+/* ── Password toggle ── */
+.neu-input__password-toggle {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  color: #9ca3af;
+  width: 1.1em;
+  height: 1.1em;
+  transition: color 0.15s ease;
+}
+
+.neu-input__password-toggle:hover { color: #6b7280; }
+
+.neu-input__password-toggle svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* ── Hint ── */
+.neu-input__hint {
+  font-size: 0.8125rem;
+  color: #6b7280;
+  padding-left: 0.25rem;
+}
+
+.neu-input__hint--error { color: #ef4444; }

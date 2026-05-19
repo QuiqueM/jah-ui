@@ -1,0 +1,267 @@
+/* ── Size tokens ── */
+.neu-stepper--sm {
+  --ind-size:  1.75rem;
+  --ind-half:  0.875rem;
+  --ind-font:  0.75rem;
+  --lbl-font:  0.8125rem;
+  --desc-font: 0.75rem;
+  --conn-h:    2px;
+}
+
+.neu-stepper--md {
+  --ind-size:  2.25rem;
+  --ind-half:  1.125rem;
+  --ind-font:  0.875rem;
+  --lbl-font:  0.9375rem;
+  --desc-font: 0.8125rem;
+  --conn-h:    2.5px;
+}
+
+.neu-stepper--lg {
+  --ind-size:  2.875rem;
+  --ind-half:  1.4375rem;
+  --ind-font:  1rem;
+  --lbl-font:  1rem;
+  --desc-font: 0.875rem;
+  --conn-h:    3px;
+}
+
+/* ── Neumorphic variables ── */
+.neu-stepper {
+  --neu-bg:           #e0e5ec;
+  --neu-shadow-light: #ffffff;
+  --neu-shadow-dark:  #b8bec7;
+  --stepper-color:    #3b82f6;
+
+  display: flex;
+  font-family: inherit;
+}
+
+/* ════════════════════════════════════════
+   HORIZONTAL
+════════════════════════════════════════ */
+.neu-stepper--horizontal {
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+/* Step wrapper */
+.neu-stepper--horizontal .neu-stepper__step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  flex-shrink: 0;
+  max-width: 8rem;
+  gap: 0.5rem;
+  outline: none;
+}
+
+/* Indicator column (horizontal: just the circle) */
+.neu-stepper--horizontal .neu-stepper__indicator-col {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Horizontal connector */
+.neu-stepper--horizontal .neu-stepper__connector {
+  flex: 1;
+  height: var(--conn-h);
+  /* align with center of indicator */
+  margin-top: calc(var(--ind-half) - var(--conn-h) / 2);
+  min-width: 1.5rem;
+  background: #c8cdd6;
+  border-radius: 9999px;
+  transition: background 0.4s ease;
+}
+
+/* ════════════════════════════════════════
+   VERTICAL
+════════════════════════════════════════ */
+.neu-stepper--vertical {
+  flex-direction: column;
+}
+
+/* Step wrapper */
+.neu-stepper--vertical .neu-stepper__step {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 0.875rem;
+  outline: none;
+}
+
+/* Left column: indicator + vertical line */
+.neu-stepper--vertical .neu-stepper__indicator-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+  width: var(--ind-size);
+}
+
+/* Vertical connector lives inside indicator-col */
+.neu-stepper--vertical .neu-stepper__connector {
+  width: var(--conn-h);
+  flex: 1;
+  min-height: 1.5rem;
+  background: #c8cdd6;
+  border-radius: 9999px;
+  margin: 0.25rem 0;
+  transition: background 0.4s ease;
+}
+
+/* Content (label + description) */
+.neu-stepper--vertical .neu-stepper__content {
+  padding-top: calc((var(--ind-size) - var(--lbl-font) * 1.4) / 2);
+  padding-bottom: 1.25rem;
+}
+
+/* ════════════════════════════════════════
+   CONNECTOR STATES
+════════════════════════════════════════ */
+.neu-stepper__connector--done {
+  background: var(--stepper-color);
+}
+
+/* ════════════════════════════════════════
+   INDICATOR
+════════════════════════════════════════ */
+.neu-stepper__indicator {
+  width:  var(--ind-size);
+  height: var(--ind-size);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: box-shadow 0.25s ease, background 0.25s ease, color 0.25s ease;
+}
+
+/* ── Pending ── */
+.neu-stepper__indicator--pending {
+  background: var(--neu-bg);
+  color: #9ca3af;
+  box-shadow:
+    4px 4px 9px var(--neu-shadow-dark),
+    -4px -4px 9px var(--neu-shadow-light);
+}
+
+/* ── Active ── */
+.neu-stepper__indicator--active {
+  background: var(--neu-bg);
+  color: var(--stepper-color);
+  box-shadow:
+    6px 6px 14px var(--neu-shadow-dark),
+    -6px -6px 14px var(--neu-shadow-light);
+}
+
+/* Pulsing ring on active step */
+.neu-stepper__indicator--active::after {
+  content: '';
+  position: absolute;
+  width:  calc(var(--ind-size) + 0.5rem);
+  height: calc(var(--ind-size) + 0.5rem);
+  border-radius: 50%;
+  border: 2px solid var(--stepper-color);
+  opacity: 0;
+  animation: neu-step-pulse 2s ease-out infinite;
+  pointer-events: none;
+}
+
+/* Need position relative on indicator for the ::after ring */
+.neu-stepper__indicator {
+  position: relative;
+}
+
+@keyframes neu-step-pulse {
+  0%   { opacity: 0.6; transform: scale(1); }
+  100% { opacity: 0;   transform: scale(1.35); }
+}
+
+/* ── Completed ── */
+.neu-stepper__indicator--completed {
+  background: var(--stepper-color);
+  color: #ffffff;
+  box-shadow:
+    inset 3px 3px 7px rgba(0, 0, 0, 0.15),
+    inset -3px -3px 7px rgba(255, 255, 255, 0.25),
+    0 0 12px rgba(59, 130, 246, 0.3);
+}
+
+/* ── Error ── */
+.neu-stepper__indicator--error {
+  background: #fee2e2;
+  color: #ef4444;
+  box-shadow:
+    inset 3px 3px 7px #f0b8b8,
+    inset -3px -3px 7px #ffffff,
+    0 0 10px rgba(239, 68, 68, 0.25);
+}
+
+/* ── SVG inside indicator ── */
+.neu-stepper__indicator svg {
+  width:  45%;
+  height: 45%;
+  flex-shrink: 0;
+}
+
+/* ── Step number ── */
+.neu-stepper__number {
+  font-size:   var(--ind-font);
+  font-weight: 700;
+  line-height: 1;
+}
+
+/* ════════════════════════════════════════
+   STEP CONTENT
+════════════════════════════════════════ */
+.neu-stepper__content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.neu-stepper__label {
+  font-size:   var(--lbl-font);
+  font-weight: 600;
+  color: #374151;
+  line-height: 1.3;
+}
+
+.neu-stepper__step--active   .neu-stepper__label { color: var(--stepper-color); }
+.neu-stepper__step--error    .neu-stepper__label { color: #ef4444; }
+.neu-stepper__step--pending  .neu-stepper__label { color: #9ca3af; }
+.neu-stepper__step--disabled .neu-stepper__label { color: #c4cad4; }
+
+.neu-stepper__description {
+  font-size:  var(--desc-font);
+  color: #9ca3af;
+  line-height: 1.4;
+}
+
+/* ════════════════════════════════════════
+   INTERACTIVE STATES
+════════════════════════════════════════ */
+.neu-stepper__step--clickable {
+  cursor: pointer;
+}
+
+.neu-stepper__step--clickable:focus-visible .neu-stepper__indicator {
+  outline: 2px solid var(--stepper-color);
+  outline-offset: 3px;
+}
+
+.neu-stepper__step--clickable:hover .neu-stepper__indicator--pending {
+  box-shadow:
+    6px 6px 14px var(--neu-shadow-dark),
+    -6px -6px 14px var(--neu-shadow-light);
+  color: #6b7280;
+}
+
+.neu-stepper__step--disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+  pointer-events: none;
+}

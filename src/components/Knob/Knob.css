@@ -1,0 +1,123 @@
+.neu-knob-root {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.625rem;
+  user-select: none;
+}
+
+/* ── Dial ── */
+.neu-knob {
+  position: relative;
+  border-radius: 50%;
+  cursor: grab;
+  flex-shrink: 0;
+  touch-action: none;
+}
+
+.neu-knob:focus-visible {
+  outline: 2px solid #3b82f6;
+  outline-offset: 4px;
+  border-radius: 50%;
+}
+
+.neu-knob--dragging { cursor: grabbing; }
+
+.neu-knob--disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* ── Neumorphic base ── */
+.neu-knob__base {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: #e0e5ec;
+  box-shadow:
+    8px 8px 18px #b8bec7,
+    -8px -8px 18px #ffffff;
+  transition: box-shadow 0.2s ease;
+}
+
+.neu-knob--dragging .neu-knob__base {
+  box-shadow:
+    5px 5px 12px #b8bec7,
+    -5px -5px 12px #ffffff;
+}
+
+/* Inner inset ring to give depth to the arc area */
+.neu-knob__base::after {
+  content: '';
+  position: absolute;
+  inset: 18%;
+  border-radius: 50%;
+  background: #e0e5ec;
+  box-shadow:
+    inset 3px 3px 8px #b8bec7,
+    inset -3px -3px 8px #ffffff;
+}
+
+/* ── SVG overlay ── */
+.neu-knob__svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* ── Track arc ── */
+.neu-knob__track {
+  stroke: #c8cdd6;
+}
+
+/* ── Start dot ── */
+.neu-knob__start-dot {
+  fill: #c8cdd6;
+}
+
+/* ── Indicator tip ── */
+.neu-knob__tip--empty {
+  fill: #c8cdd6;
+}
+
+/* ── Center value display ── */
+.neu-knob__center {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.05em;
+  line-height: 1.1;
+  pointer-events: none;
+}
+
+.neu-knob__value {
+  font-weight: 700;
+  color: #374151;
+  font-family: inherit;
+  letter-spacing: -0.02em;
+}
+
+.neu-knob__suffix {
+  font-size: 0.65em;
+  font-weight: 500;
+  color: #9ca3af;
+  font-family: inherit;
+}
+
+/* ── Label ── */
+.neu-knob__label {
+  font-family: inherit;
+  font-weight: 500;
+  color: #4b5563;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.neu-knob-root--sm .neu-knob__label { font-size: 0.75rem; }
+.neu-knob-root--md .neu-knob__label { font-size: 0.8125rem; }
+.neu-knob-root--lg .neu-knob__label { font-size: 0.875rem; }

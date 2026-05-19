@@ -1,0 +1,116 @@
+.neu-progress-root {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+  width: 100%;
+}
+
+/* ── Header ── */
+.neu-progress__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.neu-progress__label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #4b5563;
+}
+
+.neu-progress__value {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #6b7280;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── Track ── */
+.neu-progress__track {
+  --neu-bg: #e0e5ec;
+  --neu-shadow-light: #ffffff;
+  --neu-shadow-dark: #b8bec7;
+
+  width: 100%;
+  background: var(--neu-bg);
+  overflow: hidden;
+  box-shadow:
+    inset 3px 3px 6px var(--neu-shadow-dark),
+    inset -3px -3px 6px var(--neu-shadow-light);
+}
+
+.neu-progress__track--sm { height: 0.5rem; }
+.neu-progress__track--md { height: 0.875rem; }
+.neu-progress__track--lg { height: 1.25rem; }
+
+.neu-progress__track--rounded-none { border-radius: 0; }
+.neu-progress__track--rounded-sm   { border-radius: 0.25rem; }
+.neu-progress__track--rounded-md   { border-radius: 0.5rem; }
+.neu-progress__track--rounded-full { border-radius: 9999px; }
+
+/* ── Fill ── */
+.neu-progress__fill {
+  height: 100%;
+  transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.neu-progress__fill--rounded-none { border-radius: 0; }
+.neu-progress__fill--rounded-sm   { border-radius: 0.25rem; }
+.neu-progress__fill--rounded-md   { border-radius: 0.5rem; }
+.neu-progress__fill--rounded-full { border-radius: 9999px; }
+
+/* ── Variants ── */
+.neu-progress__fill--primary {
+  background: linear-gradient(90deg, #60a5fa, #3b82f6);
+  box-shadow: 2px 0 8px rgba(59, 130, 246, 0.4);
+}
+
+.neu-progress__fill--success {
+  background: linear-gradient(90deg, #4ade80, #22c55e);
+  box-shadow: 2px 0 8px rgba(34, 197, 94, 0.4);
+}
+
+.neu-progress__fill--warning {
+  background: linear-gradient(90deg, #fcd34d, #f59e0b);
+  box-shadow: 2px 0 8px rgba(245, 158, 11, 0.4);
+}
+
+.neu-progress__fill--danger {
+  background: linear-gradient(90deg, #f87171, #ef4444);
+  box-shadow: 2px 0 8px rgba(239, 68, 68, 0.4);
+}
+
+/* ── Animated shimmer ── */
+.neu-progress__fill--animated {
+  position: relative;
+  overflow: hidden;
+}
+
+.neu-progress__fill--animated::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.35) 50%,
+    transparent 100%
+  );
+  animation: neu-shimmer 1.6s ease-in-out infinite;
+}
+
+@keyframes neu-shimmer {
+  0%   { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* ── Indeterminate ── */
+.neu-progress__fill--indeterminate {
+  width: 40% !important;
+  animation: neu-indeterminate 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes neu-indeterminate {
+  0%   { transform: translateX(-150%); }
+  100% { transform: translateX(350%); }
+}
