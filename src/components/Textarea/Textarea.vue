@@ -2,7 +2,7 @@
 import { computed, ref } from 'vue'
 import './Textarea.css'
 
-interface Props {
+export interface TextareaProps {
   modelValue?: string
   label?: string
   placeholder?: string
@@ -18,7 +18,7 @@ interface Props {
   showCount?: boolean
 }
 
-const props = withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<TextareaProps>(), {
   modelValue: '',
   rows: 4,
   size: 'md',

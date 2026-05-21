@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import './Card.css'
 
-interface Props {
+export interface CardProps {
   title?: string
   subtitle?: string
   padding?: 'none' | 'sm' | 'md' | 'lg'
@@ -10,7 +10,7 @@ interface Props {
   clickable?: boolean
 }
 
-withDefaults(defineProps<Props>(), {
+withDefaults(defineProps<CardProps>(), {
   padding: 'md',
   rounded: 'xl',
   hoverable: false,

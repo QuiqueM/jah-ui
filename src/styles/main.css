@@ -14,3 +14,31 @@ optgroup {
   font-family: inherit;
   font-size: 100%;
 }
+
+/* ── Componentes ─────────────────────────────────────────────────── */
+@import '../components/Accordion/Accordion.css';
+@import '../components/Alert/Alert.css';
+@import '../components/Avatar/Avatar.css';
+@import '../components/Avatar/AvatarGroup.css';
+@import '../components/Badge/Badge.css';
+@import '../components/Button/Button.css';
+@import '../components/Card/Card.css';
+@import '../components/Carousel/Carousel.css';
+@import '../components/Chart/Chart.css';
+@import '../components/Checkbox/Checkbox.css';
+@import '../components/Datepicker/Datepicker.css';
+@import '../components/DropdownMenu/DropdownMenu.css';
+@import '../components/Input/Input.css';
+@import '../components/Knob/Knob.css';
+@import '../components/Navbar/Navbar.css';
+@import '../components/Pagination/Pagination.css';
+@import '../components/Progress/Progress.css';
+@import '../components/Radio/Radio.css';
+@import '../components/Rating/Rating.css';
+@import '../components/Select/Select.css';
+@import '../components/Skeleton/Skeleton.css';
+@import '../components/Stepper/Stepper.css';
+@import '../components/Textarea/Textarea.css';
+@import '../components/Toggle/Toggle.css';
+@import '../components/Tooltip/Tooltip.css';
+@import '../components/Upload/Upload.css';

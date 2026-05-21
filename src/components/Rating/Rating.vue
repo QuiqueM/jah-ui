@@ -2,7 +2,7 @@
 import { computed, ref } from 'vue'
 import './Rating.css'
 
-interface Props {
+export interface RatingProps {
   modelValue?: number
   max?: number
   size?: 'sm' | 'md' | 'lg'
@@ -14,7 +14,7 @@ interface Props {
   label?: string
 }
 
-const props = withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<RatingProps>(), {
   modelValue: 0,
   max: 5,
   size: 'md',

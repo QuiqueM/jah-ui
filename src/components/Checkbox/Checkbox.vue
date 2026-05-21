@@ -2,7 +2,7 @@
 import { computed } from 'vue'
 import './Checkbox.css'
 
-interface Props {
+export interface CheckboxProps {
   modelValue?: boolean | (string | number)[]
   value?: string | number
   label?: string
@@ -13,7 +13,7 @@ interface Props {
   error?: boolean
 }
 
-const props = withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<CheckboxProps>(), {
   size: 'md',
   disabled: false,
   indeterminate: false,

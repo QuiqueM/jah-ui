@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import { computed, inject } from 'vue'
 
-interface Props {
+export interface AccordionItemProps {
   value: string
   title?: string
   disabled?: boolean
 }
 
-const props = withDefaults(defineProps<Props>(), { disabled: false })
+const props = withDefaults(defineProps<AccordionItemProps>(), { disabled: false })
 
 defineSlots<{ default?: () => unknown; title?: () => unknown }>()
 

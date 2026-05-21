@@ -1,14 +1,14 @@
 <script setup lang="ts">
 import { inject } from 'vue'
 
-interface Props {
+export interface DropdownMenuItemProps {
   label?: string
   shortcut?: string
   disabled?: boolean
   danger?: boolean
 }
 
-withDefaults(defineProps<Props>(), {
+withDefaults(defineProps<DropdownMenuItemProps>(), {
   disabled: false,
   danger: false,
 })

@@ -2,7 +2,7 @@
 import { computed } from 'vue'
 import './Pagination.css'
 
-interface Props {
+export interface PaginationProps {
   modelValue: number
   totalPages: number
   siblings?: number
@@ -12,7 +12,7 @@ interface Props {
   disabled?: boolean
 }
 
-const props = withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<PaginationProps>(), {
   siblings: 1,
   size: 'md',
   rounded: 'lg',

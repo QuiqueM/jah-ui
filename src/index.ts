@@ -1,4 +1,5 @@
 import { defineAsyncComponent } from 'vue'
+import './styles/main.css'
 
 export const Button = defineAsyncComponent(() => import('./components/Button/Button.vue'))
 export const Input = defineAsyncComponent(() => import('./components/Input/Input.vue'))
@@ -30,8 +31,31 @@ export const Stepper = defineAsyncComponent(() => import('./components/Stepper/S
 export const Upload = defineAsyncComponent(() => import('./components/Upload/Upload.vue'))
 export const Chart  = defineAsyncComponent(() => import('./components/Chart/Chart.vue'))
 export const Navbar = defineAsyncComponent(() => import('./components/Navbar/Navbar.vue'))
-export type { StepperStep } from './components/Stepper/Stepper.vue'
-export type { NavItem } from './components/Navbar/Navbar.vue'
-export type { ChartKind } from './components/Chart/Chart.vue'
-export type { UploadFile } from './components/Upload/Upload.vue'
-export type { SelectOption } from './components/Select/Select.vue'
+export type { SelectOption, SelectProps } from './components/Select/Select.vue'
+export type { StepperStep, StepperProps } from './components/Stepper/Stepper.vue'
+export type { NavItem, NavbarProps } from './components/Navbar/Navbar.vue'
+export type { ChartKind, ChartProps } from './components/Chart/Chart.vue'
+export type { UploadFile, UploadProps } from './components/Upload/Upload.vue'
+export type { ButtonProps } from './components/Button/Button.vue'
+export type { InputProps } from './components/Input/Input.vue'
+export type { CheckboxProps } from './components/Checkbox/Checkbox.vue'
+export type { RadioProps } from './components/Radio/Radio.vue'
+export type { ToggleProps } from './components/Toggle/Toggle.vue'
+export type { CardProps } from './components/Card/Card.vue'
+export type { ProgressProps } from './components/Progress/Progress.vue'
+export type { BadgeProps } from './components/Badge/Badge.vue'
+export type { AvatarProps } from './components/Avatar/Avatar.vue'
+export type { AvatarGroupProps } from './components/Avatar/AvatarGroup.vue'
+export type { TextareaProps } from './components/Textarea/Textarea.vue'
+export type { DatepickerProps } from './components/Datepicker/Datepicker.vue'
+export type { DropdownMenuProps } from './components/DropdownMenu/DropdownMenu.vue'
+export type { DropdownMenuItemProps } from './components/DropdownMenu/DropdownMenuItem.vue'
+export type { PaginationProps } from './components/Pagination/Pagination.vue'
+export type { TooltipProps } from './components/Tooltip/Tooltip.vue'
+export type { CarouselProps } from './components/Carousel/Carousel.vue'
+export type { AccordionProps } from './components/Accordion/Accordion.vue'
+export type { AccordionItemProps } from './components/Accordion/AccordionItem.vue'
+export type { AlertProps } from './components/Alert/Alert.vue'
+export type { SkeletonProps } from './components/Skeleton/Skeleton.vue'
+export type { KnobProps } from './components/Knob/Knob.vue'
+export type { RatingProps } from './components/Rating/Rating.vue'

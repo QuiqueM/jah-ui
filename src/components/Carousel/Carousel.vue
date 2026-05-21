@@ -2,7 +2,7 @@
 import { computed, onUnmounted, provide, ref, toRef, watch } from 'vue'
 import './Carousel.css'
 
-interface Props {
+export interface CarouselProps {
   modelValue?: number
   transition?: 'slide' | 'fade'
   autoplay?: boolean
@@ -13,7 +13,7 @@ interface Props {
   height?: string
 }
 
-const props = withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<CarouselProps>(), {
   modelValue: 0,
   transition: 'slide',
   autoplay: false,

@@ -9,12 +9,12 @@ export interface NavItem {
   disabled?: boolean
 }
 
-interface Props {
+export interface NavbarProps {
   items?:  NavItem[]
   sticky?: boolean
 }
 
-withDefaults(defineProps<Props>(), {
+withDefaults(defineProps<NavbarProps>(), {
   items:  () => [],
   sticky: false,
 })

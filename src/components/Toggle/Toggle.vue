@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import './Toggle.css'
 
-interface Props {
+export interface ToggleProps {
   modelValue?: boolean
   label?: string
   hint?: string
@@ -11,7 +11,7 @@ interface Props {
   error?: boolean
 }
 
-const props = withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<ToggleProps>(), {
   modelValue: false,
   labelPosition: 'right',
   size: 'md',

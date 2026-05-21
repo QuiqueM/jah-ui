@@ -1,0 +1,41 @@
+name: CI/CD - Jah-UI
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar Código
+        uses: actions/checkout@v4
+
+      - name: Instalar PNPM
+        uses: pnpm/action-setup@v3
+        with:
+          version: 9 # O la versión de pnpm que uses localmente
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          registry-url: 'https://registry.npmjs.org'
+          cache: 'pnpm' # Mantiene un caché rápido de tus dependencias
+
+      - name: Instalar Dependencias
+        run: pnpm install --frozen-lockfile
+
+      - name: Compilar Librería
+        run: pnpm run build
+
+      - name: Publicar en NPM
+        run: pnpm publish --no-git-checks
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Desplegar Storybook en GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: storybook-static # Carpeta donde se genera Storybook
+          branch: gh-pages # Rama donde se guardará la web de documentación

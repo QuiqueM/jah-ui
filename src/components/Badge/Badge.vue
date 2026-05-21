@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import './Badge.css'
 
-interface Props {
+export interface BadgeProps {
   variant?: 'primary' | 'secondary' | 'success' | 'warning' | 'danger'
   size?: 'sm' | 'md' | 'lg'
   rounded?: 'none' | 'sm' | 'md' | 'full'
@@ -9,7 +9,7 @@ interface Props {
   outline?: boolean
 }
 
-withDefaults(defineProps<Props>(), {
+withDefaults(defineProps<BadgeProps>(), {
   variant: 'primary',
   size: 'md',
   rounded: 'full',

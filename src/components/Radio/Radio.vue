@@ -2,7 +2,7 @@
 import { computed } from 'vue'
 import './Radio.css'
 
-interface Props {
+export interface RadioProps {
   modelValue?: string | number | null
   value: string | number
   label?: string
@@ -13,7 +13,7 @@ interface Props {
   error?: boolean
 }
 
-const props = withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<RadioProps>(), {
   modelValue: null,
   size: 'md',
   disabled: false,

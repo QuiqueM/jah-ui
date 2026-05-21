@@ -2,7 +2,7 @@
 import { computed, ref, watch } from 'vue'
 import './Datepicker.css'
 
-interface Props {
+export interface DatepickerProps {
   modelValue?: string
   label?: string
   placeholder?: string
@@ -16,7 +16,7 @@ interface Props {
   locale?: string
 }
 
-const props = withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<DatepickerProps>(), {
   size: 'md',
   rounded: 'lg',
   disabled: false,

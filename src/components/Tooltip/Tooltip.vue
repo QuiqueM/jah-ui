@@ -2,7 +2,7 @@
 import { computed, nextTick, onUnmounted, ref } from 'vue'
 import './Tooltip.css'
 
-interface Props {
+export interface TooltipProps {
   content: string
   placement?: 'top' | 'bottom' | 'left' | 'right'
   delay?: number
@@ -10,7 +10,7 @@ interface Props {
   maxWidth?: string
 }
 
-const props = withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<TooltipProps>(), {
   placement: 'top',
   delay: 300,
   disabled: false,

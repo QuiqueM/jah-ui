@@ -8,7 +8,7 @@ export interface UploadFile {
   error?: string
 }
 
-interface Props {
+export interface UploadProps {
   modelValue?: UploadFile[]
   accept?: string
   multiple?: boolean
@@ -20,7 +20,7 @@ interface Props {
   error?: string
 }
 
-const props = withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<UploadProps>(), {
   modelValue: () => [],
   multiple: false,
   disabled: false,

@@ -2,13 +2,13 @@
 import { provide, ref, watch } from 'vue'
 import './Accordion.css'
 
-interface Props {
+export interface AccordionProps {
   modelValue?: string | string[]
   multiple?: boolean
   defaultOpen?: string | string[]
 }
 
-const props = withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<AccordionProps>(), {
   multiple: false,
 })
 

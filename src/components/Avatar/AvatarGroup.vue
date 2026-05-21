@@ -3,13 +3,13 @@ import { computed, useSlots } from 'vue'
 import Avatar from './Avatar.vue'
 import './AvatarGroup.css'
 
-interface Props {
+export interface AvatarGroupProps {
   max?: number
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl'
   overlap?: 'sm' | 'md' | 'lg'
 }
 
-const props = withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<AvatarGroupProps>(), {
   size: 'md',
   overlap: 'md',
 })

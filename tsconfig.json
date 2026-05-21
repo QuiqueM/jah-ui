@@ -19,5 +19,12 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["src/**/*.ts", "src/**/*.vue", ".storybook/**/*.ts"]
+  "include": ["src/**/*.ts", "src/**/*.vue", ".storybook/**/*.ts"],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "src/**/*.stories.ts",     // 💡 Ignora historias en TypeScript tradicional
+    "src/**/*.stories.js",
+    "src/**/*.test.ts"       // De paso, ignoramos archivos de pruebas si tienes
+  ]
 }

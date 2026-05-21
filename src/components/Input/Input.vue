@@ -2,7 +2,7 @@
 import { ref, computed } from 'vue'
 import './Input.css'
 
-interface Props {
+export interface InputProps {
   modelValue?: string | number
   type?: 'text' | 'number' | 'password'
   placeholder?: string
@@ -16,7 +16,7 @@ interface Props {
   hint?: string
 }
 
-const props = withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<InputProps>(), {
   type: 'text',
   size: 'md',
   rounded: 'lg',

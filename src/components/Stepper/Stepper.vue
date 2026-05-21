@@ -9,7 +9,7 @@ export interface StepperStep {
   disabled?: boolean
 }
 
-interface Props {
+export interface StepperProps {
   modelValue: number
   steps: StepperStep[]
   orientation?: 'horizontal' | 'vertical'
@@ -18,7 +18,7 @@ interface Props {
   color?: string
 }
 
-const props = withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<StepperProps>(), {
   orientation: 'horizontal',
   size: 'md',
   clickable: false,

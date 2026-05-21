@@ -37,7 +37,7 @@ ChartJS.defaults.datasets.bar.borderSkipped = false
 
 export type ChartKind = 'line' | 'bar' | 'pie' | 'doughnut' | 'radar' | 'polarArea' | 'bubble' | 'scatter'
 
-interface Props {
+export interface ChartProps {
   type:     ChartKind
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   data:     ChartData<any>
@@ -47,7 +47,7 @@ interface Props {
   height?:  string
 }
 
-const props = withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<ChartProps>(), {
   height: '300px',
 })
 

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import './Alert.css'
 
-interface Props {
+export interface AlertProps {
   variant?: 'info' | 'success' | 'warning' | 'danger'
   title?: string
   icon?: boolean
@@ -9,7 +9,7 @@ interface Props {
   modelValue?: boolean
 }
 
-withDefaults(defineProps<Props>(), {
+withDefaults(defineProps<AlertProps>(), {
   variant: 'info',
   icon: true,
   dismissible: false,

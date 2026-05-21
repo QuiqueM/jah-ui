@@ -2,7 +2,7 @@
 import { computed, ref } from 'vue'
 import './Knob.css'
 
-interface Props {
+export interface KnobProps {
   modelValue?: number
   min?: number
   max?: number
@@ -14,7 +14,7 @@ interface Props {
   disabled?: boolean
 }
 
-const props = withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<KnobProps>(), {
   modelValue: 0,
   min: 0,
   max: 100,

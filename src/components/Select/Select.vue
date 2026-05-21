@@ -8,7 +8,7 @@ export interface SelectOption {
   disabled?: boolean
 }
 
-interface Props {
+export interface SelectProps {
   modelValue?: string | number | null
   options: SelectOption[]
   placeholder?: string
@@ -20,7 +20,7 @@ interface Props {
   error?: boolean
 }
 
-const props = withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<SelectProps>(), {
   modelValue: null,
   placeholder: 'Selecciona una opción',
   size: 'md',

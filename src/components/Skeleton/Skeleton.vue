@@ -2,7 +2,7 @@
 import { computed } from 'vue'
 import './Skeleton.css'
 
-interface Props {
+export interface SkeletonProps {
   variant?: 'text' | 'circle' | 'rect' | 'button'
   lines?: number
   width?: string
@@ -11,7 +11,7 @@ interface Props {
   animated?: boolean
 }
 
-const props = withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<SkeletonProps>(), {
   variant: 'text',
   lines: 1,
   animated: true,

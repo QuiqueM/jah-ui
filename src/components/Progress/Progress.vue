@@ -2,7 +2,7 @@
 import { computed } from 'vue'
 import './Progress.css'
 
-interface Props {
+export interface ProgressProps {
   value?: number
   max?: number
   variant?: 'primary' | 'success' | 'warning' | 'danger'
@@ -14,7 +14,7 @@ interface Props {
   animated?: boolean
 }
 
-const props = withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<ProgressProps>(), {
   value: 0,
   max: 100,
   variant: 'primary',

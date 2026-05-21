@@ -2,12 +2,12 @@
 import { provide, ref } from 'vue'
 import './DropdownMenu.css'
 
-interface Props {
+export interface DropdownMenuProps {
   placement?: 'bottom-start' | 'bottom-end' | 'top-start' | 'top-end'
   disabled?: boolean
 }
 
-const props = withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<DropdownMenuProps>(), {
   placement: 'bottom-start',
   disabled: false,
 })

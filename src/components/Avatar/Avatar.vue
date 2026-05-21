@@ -2,7 +2,7 @@
 import { computed, ref } from 'vue'
 import './Avatar.css'
 
-interface Props {
+export interface AvatarProps {
   src?: string
   alt?: string
   name?: string
@@ -13,7 +13,7 @@ interface Props {
   bordered?: boolean
 }
 
-const props = withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<AvatarProps>(), {
   size: 'md',
   rounded: 'full',
   variant: 'auto',

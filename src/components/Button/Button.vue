@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import './Button.css'
 
-interface Props {
+export interface ButtonProps {
   label: string
   variant?: 'primary' | 'secondary' | 'ghost' | 'danger'
   size?: 'sm' | 'md' | 'lg'
@@ -11,7 +11,7 @@ interface Props {
   loading?: boolean
 }
 
-withDefaults(defineProps<Props>(), {
+withDefaults(defineProps<ButtonProps>(), {
   variant: 'primary',
   size: 'md',
   rounded: 'lg',
