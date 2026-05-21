@@ -11,18 +11,37 @@ jobs:
       - name: Descargar Código
         uses: actions/checkout@v4
 
+      # 1. Primero instalamos y configuramos PNPM con su propio caché integrado
       - name: Instalar PNPM
         uses: pnpm/action-setup@v3
         with:
-          version: 9 # O la versión de pnpm que uses localmente
+          version: 9 # Reemplaza por tu versión local de pnpm si es distinta
+          run_install: false # Evitamos que instale antes de configurar Node
 
+      # 2. Después configuramos Node (QUITANDO la línea cache: 'pnpm' de aquí)
       - name: Configurar Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
           registry-url: 'https://registry.npmjs.org'
-          cache: 'pnpm' # Mantiene un caché rápido de tus dependencias
+          # 💡 Eliminamos la línea de cache: 'pnpm' de este paso para evitar el error
 
+      # 3. Le pedimos a PNPM que busque su ruta de caché de forma segura
+      - name: Configurar Caché de PNPM
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+
+      # 4. Usamos la acción nativa de caché de GitHub para guardar la tienda de pnpm
+      - name: Iniciar Caché
+        uses: actions/cache@v4
+        with:
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      # 5. Finalmente instalamos las dependencias de manera ultra rápida
       - name: Instalar Dependencias
         run: pnpm install --frozen-lockfile
 
