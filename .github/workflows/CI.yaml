@@ -18,31 +18,35 @@ jobs:
           node-version: 20
           registry-url: 'https://registry.npmjs.org'
 
-      # 2. Instalamos PNPM y le activamos su caché nativo en un solo paso
+      # 2. Instalamos PNPM usando la versión v3 que es la más compatible en este flujo directo
       - name: Instalar PNPM
-        uses: pnpm/action-setup@v4 # Actualizado a v4 que es más estable con caché
+        uses: pnpm/action-setup@v3
         with:
-          version: 9 # Reemplaza por tu versión de pnpm si usas otra (ej: 8, 9, 10)
-          dest: ~/setup-pnpm
+          version: 9
 
-      # 3. Le decimos a pnpm que use el almacenamiento con caché integrado
-      - name: Configurar ruta de almacenamiento de PNPM
-        run: pnpm config set store-dir ~/.pnpm-store
-
-      # 4. Instalar Dependencias
+      # 3. Instalamos dependencias inyectando la variable de entorno para evitar el error de pnpm config
       - name: Instalar Dependencias
         run: pnpm install --frozen-lockfile
+        env:
+          PNPM_CACHE_FOLDER: ~/.pnpm-store
 
+      # 4. Compilamos el código de la librería para producción (genera la carpeta dist/)
       - name: Compilar Librería
         run: pnpm run build
 
+      # 5. ¡Importante! Compilamos Storybook para generar los archivos estáticos (carpeta storybook-static/)
+      - name: Compilar Storybook
+        run: pnpm run build-storybook
+
+      # 6. Publicamos en NPM usando el Token secreto configurado en GitHub
       - name: Publicar en NPM
         run: pnpm publish --no-git-checks
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
+      # 7. Desplegamos la carpeta generada en el paso 5 hacia GitHub Pages
       - name: Desplegar Storybook en GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: storybook-static # Carpeta donde se genera Storybook
-          branch: gh-pages # Rama donde se guardará la web de documentación
+          folder: storybook-static
+          branch: gh-pages
