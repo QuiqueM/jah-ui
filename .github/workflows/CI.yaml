@@ -11,40 +11,32 @@ jobs:
       - name: Descargar Código
         uses: actions/checkout@v4
 
-      # 1. Configuramos Node primero
+      # 1. Configuramos Node y el registro de NPM
       - name: Configurar Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
           registry-url: 'https://registry.npmjs.org'
 
-      # 2. Instalamos PNPM usando la versión v3 que es la más compatible en este flujo directo
-      - name: Instalar PNPM
-        uses: pnpm/action-setup@v3
-        with:
-          version: 9
-
-      # 3. Instalamos dependencias inyectando la variable de entorno para evitar el error de pnpm config
+      # 2. Instalamos usando npm tradicional para saltarnos el bug de pnpm en CI
       - name: Instalar Dependencias
-        run: pnpm install --frozen-lockfile --recursive=false
-        env:
-          PNPM_CACHE_FOLDER: ~/.pnpm-store
+        run: npm install
 
-      # 4. Compilamos el código de la librería para producción (genera la carpeta dist/)
+      # 3. Compilamos el código de la librería para producción
       - name: Compilar Librería
-        run: pnpm run build
+        run: npm run build
 
-      # 5. ¡Importante! Compilamos Storybook para generar los archivos estáticos (carpeta storybook-static/)
+      # 4. Compilamos Storybook para generar la documentación
       - name: Compilar Storybook
-        run: pnpm run build-storybook
+        run: npm run build-storybook
 
-      # 6. Publicamos en NPM usando el Token secreto configurado en GitHub
+      # 5. Publicamos en NPM usando el Token secreto
       - name: Publicar en NPM
-        run: pnpm publish --no-git-checks
+        run: npm publish --no-git-checks
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      # 7. Desplegamos la carpeta generada en el paso 5 hacia GitHub Pages
+      # 6. Desplegamos Storybook a GitHub Pages
       - name: Desplegar Storybook en GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
