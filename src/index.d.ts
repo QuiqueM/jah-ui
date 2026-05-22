@@ -159,6 +159,7 @@ export declare const Card: {
         clickable: boolean;
         padding: "none" | "sm" | "md" | "lg";
         hoverable: boolean;
+        coverPosition: "top" | "left" | "right";
     }, false, {}, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, {}, any, import('vue').ComponentProvideOptions, {
         P: {};
         B: {};
@@ -173,6 +174,7 @@ export declare const Card: {
         clickable: boolean;
         padding: "none" | "sm" | "md" | "lg";
         hoverable: boolean;
+        coverPosition: "top" | "left" | "right";
     }>;
     __isFragment?: never;
     __isTeleport?: never;
@@ -186,6 +188,7 @@ export declare const Card: {
     clickable: boolean;
     padding: "none" | "sm" | "md" | "lg";
     hoverable: boolean;
+    coverPosition: "top" | "left" | "right";
 }, {}, string, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, import('vue').ComponentProvideOptions> & import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps & (new () => {
     $slots: {
         default?: () => unknown;
