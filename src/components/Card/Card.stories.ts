@@ -14,6 +14,7 @@ const meta: Meta<typeof Card> = {
   argTypes: {
     padding: { control: 'select', options: ['none', 'sm', 'md', 'lg'] },
     rounded: { control: 'select', options: ['none', 'sm', 'md', 'lg', 'xl'] },
+    coverPosition: { control: 'select', options: ['top', 'left', 'right'] },
   },
 }
 
@@ -60,20 +61,57 @@ export const WithFooter: Story = {
   }),
 }
 
+const coverSlot = `
+  <template #cover>
+    <div style="height:100%;min-height:160px;background:linear-gradient(135deg,#667eea,#764ba2);display:flex;align-items:center;justify-content:center;">
+      <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.7">
+        <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/>
+      </svg>
+    </div>
+  </template>`
+
 export const WithCover: Story = {
-  name: 'Con Cover',
+  name: 'Cover arriba (top)',
   render: () => ({
     components: { Card },
     template: `
       <div style="padding:2rem;background:#e0e5ec;min-width:320px;max-width:360px;">
-        <Card title="Paisaje montañoso" subtitle="Fotografía · Naturaleza" rounded="xl">
-          <template #cover>
-            <div style="height:180px;background:linear-gradient(135deg,#667eea,#764ba2);display:flex;align-items:center;justify-content:center;">
-              <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.6">
-                <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/>
-              </svg>
-            </div>
-          </template>
+        <Card title="Paisaje montañoso" subtitle="Fotografía · Naturaleza" rounded="xl" coverPosition="top">
+          ${coverSlot}
+          <p style="margin:0;font-size:0.9375rem;color:#6b7280;line-height:1.6">
+            Una impresionante vista desde la cima con niebla entre los valles al amanecer.
+          </p>
+        </Card>
+      </div>
+    `,
+  }),
+}
+
+export const WithCoverLeft: Story = {
+  name: 'Cover a la izquierda (left)',
+  render: () => ({
+    components: { Card },
+    template: `
+      <div style="padding:2rem;background:#e0e5ec;min-width:320px;max-width:480px;">
+        <Card title="Paisaje montañoso" subtitle="Fotografía · Naturaleza" rounded="xl" coverPosition="left">
+          ${coverSlot}
+          <p style="margin:0;font-size:0.9375rem;color:#6b7280;line-height:1.6">
+            Una impresionante vista desde la cima con niebla entre los valles al amanecer.
+          </p>
+        </Card>
+      </div>
+    `,
+  }),
+}
+
+export const WithCoverRight: Story = {
+  name: 'Cover a la derecha (right)',
+  render: () => ({
+    components: { Card },
+    template: `
+      <div style="padding:2rem;background:#e0e5ec;min-width:320px;max-width:480px;">
+        <Card title="Paisaje montañoso" subtitle="Fotografía · Naturaleza" rounded="xl" coverPosition="right">
+          ${coverSlot}
           <p style="margin:0;font-size:0.9375rem;color:#6b7280;line-height:1.6">
             Una impresionante vista desde la cima con niebla entre los valles al amanecer.
           </p>

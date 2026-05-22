@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { computed } from 'vue'
 import './Card.css'
 
 export interface CardProps {
@@ -8,13 +9,15 @@ export interface CardProps {
   rounded?: 'none' | 'sm' | 'md' | 'lg' | 'xl'
   hoverable?: boolean
   clickable?: boolean
+  coverPosition?: 'top' | 'left' | 'right'
 }
 
-withDefaults(defineProps<CardProps>(), {
+const props = withDefaults(defineProps<CardProps>(), {
   padding: 'md',
   rounded: 'xl',
   hoverable: false,
   clickable: false,
+  coverPosition: 'top',
 })
 
 defineEmits<{ click: [event: MouseEvent] }>()
@@ -25,6 +28,14 @@ const slots = defineSlots<{
   header?: () => unknown
   footer?: () => unknown
 }>()
+
+const isSideCover = computed(() => !!slots.cover && props.coverPosition !== 'top')
+
+const coverClasses = computed(() => {
+  if (!slots.cover) return []
+  const pos = isSideCover.value ? props.coverPosition : 'top'
+  return ['neu-card__cover', `neu-card__cover--${pos}-${props.rounded}`]
+})
 </script>
 
 <template>
@@ -34,30 +45,33 @@ const slots = defineSlots<{
       'neu-card',
       `neu-card--rounded-${rounded}`,
       { 'neu-card--hoverable': hoverable || clickable, 'neu-card--clickable': clickable },
+      isSideCover ? `neu-card--cover-${coverPosition}` : '',
     ]"
     v-bind="clickable ? { type: 'button' } : {}"
     @click="clickable && $emit('click', $event)"
   >
-    <div v-if="slots.cover" :class="['neu-card__cover', `neu-card__cover--rounded-${rounded}`]">
+    <div v-if="slots.cover" :class="coverClasses">
       <slot name="cover" />
     </div>
 
-    <div :class="['neu-card__inner', `neu-card__inner--${padding}`]">
-      <div v-if="slots.header" class="neu-card__header">
-        <slot name="header" />
-      </div>
-      <div v-else-if="title || subtitle" class="neu-card__header">
-        <p v-if="title" class="neu-card__title">{{ title }}</p>
-        <p v-if="subtitle" class="neu-card__subtitle">{{ subtitle }}</p>
+    <div class="neu-card__content">
+      <div :class="['neu-card__inner', `neu-card__inner--${padding}`]">
+        <div v-if="slots.header" class="neu-card__header">
+          <slot name="header" />
+        </div>
+        <div v-else-if="title || subtitle" class="neu-card__header">
+          <p v-if="title" class="neu-card__title">{{ title }}</p>
+          <p v-if="subtitle" class="neu-card__subtitle">{{ subtitle }}</p>
+        </div>
+
+        <div v-if="slots.default" class="neu-card__body">
+          <slot />
+        </div>
       </div>
 
-      <div v-if="slots.default" class="neu-card__body">
-        <slot />
+      <div v-if="slots.footer" :class="['neu-card__footer', `neu-card__footer--${padding}`]">
+        <slot name="footer" />
       </div>
-    </div>
-
-    <div v-if="slots.footer" :class="['neu-card__footer', `neu-card__footer--${padding}`]">
-      <slot name="footer" />
     </div>
   </component>
 </template>
