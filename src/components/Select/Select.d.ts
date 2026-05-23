@@ -21,11 +21,11 @@ declare const _default: import('vue').DefineComponent<SelectProps, {}, {}, {}, {
     "onUpdate:modelValue"?: ((value: string | number | null) => any) | undefined;
     onChange?: ((value: string | number | null) => any) | undefined;
 }>, {
-    modelValue: string | number | null;
-    placeholder: string;
     size: "sm" | "md" | "lg";
     rounded: "none" | "sm" | "md" | "lg" | "xl" | "full";
     disabled: boolean;
+    modelValue: string | number | null;
+    placeholder: string;
     error: boolean;
 }, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, any>;
 export default _default;

@@ -14,9 +14,9 @@ declare const _default: import('vue').DefineComponent<ToggleProps, {}, {}, {}, {
     "onUpdate:modelValue"?: ((value: boolean) => any) | undefined;
     onChange?: ((value: boolean) => any) | undefined;
 }>, {
-    modelValue: boolean;
     size: "sm" | "md" | "lg";
     disabled: boolean;
+    modelValue: boolean;
     error: boolean;
     labelPosition: "left" | "right";
 }, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, any>;

@@ -14,9 +14,9 @@ declare const _default: import('vue').DefineComponent<RatingProps, {}, {}, {}, {
 }, string, import('vue').PublicProps, Readonly<RatingProps> & Readonly<{
     "onUpdate:modelValue"?: ((value: number) => any) | undefined;
 }>, {
-    modelValue: number;
     size: "sm" | "md" | "lg";
     disabled: boolean;
+    modelValue: number;
     color: string;
     max: number;
     readonly: boolean;

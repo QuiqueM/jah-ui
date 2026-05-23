@@ -15,11 +15,11 @@ declare const __VLS_component: import('vue').DefineComponent<ButtonProps, {}, {}
 }, string, import('vue').PublicProps, Readonly<ButtonProps> & Readonly<{
     onClick?: ((event: MouseEvent) => any) | undefined;
 }>, {
+    variant: "primary" | "secondary" | "ghost" | "danger";
     size: "sm" | "md" | "lg";
     rounded: "none" | "sm" | "md" | "lg" | "xl" | "full";
-    disabled: boolean;
-    variant: "primary" | "secondary" | "ghost" | "danger";
     iconPosition: "left" | "right";
+    disabled: boolean;
     loading: boolean;
 }, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, any>;
 declare const _default: __VLS_WithSlots<typeof __VLS_component, __VLS_Slots>;

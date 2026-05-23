@@ -27,8 +27,8 @@ declare const _default: import('vue').DefineComponent<UploadProps, {}, {}, {}, {
         reason: string;
     }[]) => any) | undefined;
 }>, {
-    modelValue: UploadFile[];
     disabled: boolean;
+    modelValue: UploadFile[];
     multiple: boolean;
 }, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, any>;
 export default _default;

@@ -18,10 +18,10 @@ declare const _default: import('vue').DefineComponent<TextareaProps, {}, {}, {},
 }, string, import('vue').PublicProps, Readonly<TextareaProps> & Readonly<{
     "onUpdate:modelValue"?: ((value: string) => any) | undefined;
 }>, {
-    modelValue: string;
     size: "sm" | "md" | "lg";
     rounded: "none" | "sm" | "md" | "lg" | "xl";
     disabled: boolean;
+    modelValue: string;
     resize: "none" | "vertical" | "horizontal" | "both";
     rows: number;
     readonly: boolean;

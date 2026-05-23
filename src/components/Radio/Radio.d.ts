@@ -13,9 +13,9 @@ declare const _default: import('vue').DefineComponent<RadioProps, {}, {}, {}, {}
 }, string, import('vue').PublicProps, Readonly<RadioProps> & Readonly<{
     "onUpdate:modelValue"?: ((value: string | number) => any) | undefined;
 }>, {
-    modelValue: string | number | null;
     size: "sm" | "md" | "lg";
     disabled: boolean;
+    modelValue: string | number | null;
     error: boolean;
 }, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, any>;
 export default _default;

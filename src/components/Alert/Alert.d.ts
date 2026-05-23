@@ -17,9 +17,9 @@ declare const __VLS_component: import('vue').DefineComponent<AlertProps, {}, {},
     "onUpdate:modelValue"?: ((visible: boolean) => any) | undefined;
     onClose?: (() => any) | undefined;
 }>, {
-    modelValue: boolean;
     variant: "info" | "success" | "warning" | "danger";
     icon: boolean;
+    modelValue: boolean;
     dismissible: boolean;
 }, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, any>;
 declare const _default: __VLS_WithSlots<typeof __VLS_component, __VLS_Slots>;

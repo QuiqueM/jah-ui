@@ -14,12 +14,12 @@ declare const _default: import('vue').DefineComponent<KnobProps, {}, {}, {}, {},
 }, string, import('vue').PublicProps, Readonly<KnobProps> & Readonly<{
     "onUpdate:modelValue"?: ((value: number) => any) | undefined;
 }>, {
-    modelValue: number;
     size: "sm" | "md" | "lg";
     disabled: boolean;
+    modelValue: number;
     color: string;
-    step: number;
     max: number;
     min: number;
+    step: number;
 }, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, any>;
 export default _default;

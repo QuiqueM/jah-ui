@@ -9,9 +9,9 @@ type __VLS_Slots = {
     default?: () => unknown;
 };
 declare const __VLS_component: import('vue').DefineComponent<BadgeProps, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, string, import('vue').PublicProps, Readonly<BadgeProps> & Readonly<{}>, {
+    variant: "primary" | "secondary" | "success" | "warning" | "danger";
     size: "sm" | "md" | "lg";
     rounded: "none" | "sm" | "md" | "full";
-    variant: "primary" | "secondary" | "success" | "warning" | "danger";
     dot: boolean;
     outline: boolean;
 }, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, any>;

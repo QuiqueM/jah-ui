@@ -19,9 +19,9 @@ declare const __VLS_component: import('vue').DefineComponent<CardProps, {}, {}, 
     onClick?: ((event: MouseEvent) => any) | undefined;
 }>, {
     rounded: "none" | "sm" | "md" | "lg" | "xl";
-    clickable: boolean;
     padding: "none" | "sm" | "md" | "lg";
     hoverable: boolean;
+    clickable: boolean;
     coverPosition: "top" | "left" | "right";
 }, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, any>;
 declare const _default: __VLS_WithSlots<typeof __VLS_component, __VLS_Slots>;

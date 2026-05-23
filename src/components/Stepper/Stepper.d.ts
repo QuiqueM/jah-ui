@@ -18,8 +18,8 @@ declare const _default: import('vue').DefineComponent<StepperProps, {}, {}, {}, 
     "onUpdate:modelValue"?: ((index: number) => any) | undefined;
 }>, {
     size: "sm" | "md" | "lg";
-    orientation: "horizontal" | "vertical";
-    clickable: boolean;
     color: string;
+    clickable: boolean;
+    orientation: "horizontal" | "vertical";
 }, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, any>;
 export default _default;
