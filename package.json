@@ -1,6 +1,6 @@
 {
   "name": "jah-ui",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A Vue 3 component library",
   "type": "module",
   "main": "./dist/jah-ui.umd.js",
