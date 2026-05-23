@@ -23,7 +23,7 @@ const emit = defineEmits<{
   'item-click': [item: NavItem]
 }>()
 
-defineSlots<{
+const slots = defineSlots<{
   brand?():    unknown
   actions?():  unknown
 }>()
@@ -112,7 +112,7 @@ function onItemClick(item: NavItem) {
             </a>
           </li>
         </ul>
-        <div v-if="$slots.actions" class="neu-navbar__mobile-actions">
+        <div v-if="slots.actions" class="neu-navbar__mobile-actions">
           <slot name="actions" />
         </div>
       </div>

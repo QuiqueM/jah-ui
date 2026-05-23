@@ -30,21 +30,19 @@ export default defineConfig({
       output: [
         {
           format: 'es',
-          inlineDynamicImports: true, // 💥 Fuerza a meter TODO en el archivo ESM
           entryFileNames: 'jah-ui.es.js',
-          preserveModules: false      // Evita explícitamente que preserve los archivos individuales
+          preserveModules: false,
         },
         {
           format: 'umd',
-          inlineDynamicImports: true, // 💥 Fuerza a meter TODO en el archivo UMD
           entryFileNames: 'jah-ui.umd.js',
           name: 'JahUI',
           globals: {
             vue: 'Vue',
             'chart.js': 'Chart',
-            'vue-chartjs': 'VueChartjs'
-          }
-        }
+            'vue-chartjs': 'VueChartjs',
+          },
+        },
       ]
     },
   },
